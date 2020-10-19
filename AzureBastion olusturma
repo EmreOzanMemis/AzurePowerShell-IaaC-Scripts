@@ -1,0 +1,3 @@
+$publicip = New-AzPublicIpAddress -ResourceGroupName "AzureRG" -name "PSAzureBastionIP" -location "westus" -AllocationMethod Static -Sku Standard
+
+$bastion = New-AzBastion -ResourceGroupName "AzureRG" -Name "PSBastion" -PublicIpAddress $publicip -VirtualNetworkName PSAzureBCVnet
