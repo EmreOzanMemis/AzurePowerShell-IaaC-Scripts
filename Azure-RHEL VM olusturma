@@ -1,0 +1,6 @@
+$resourceGroup = "AzureRG" 
+$location = "westus" 
+$vmName = "PS-rhel2-vm" 
+$cred = Get-Credential -Message "Enter a username and password for the virtual machine." 
+New-AzResourceGroup -Name $resourceGroup -Location $location
+New-AzVM -ResourceGroupName $resourceGroup -Name $vmName -Location $location -ImageName "RHEL" -Size "Standard_D2_v3" -VirtualNetworkName "PSAzureBCVnet" -SubnetName "PSDMZSubnet"  -Credential $cred -OpenPorts 22
