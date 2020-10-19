@@ -1,2 +1,2 @@
-# PowerShell-Komutlari
-Windows Server 2019 için PowerShell komut tanımları
+# Azure PowerShell-Komutlari
+Azure için PowerShell komut tanımları
