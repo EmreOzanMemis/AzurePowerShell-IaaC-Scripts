@@ -1,0 +1,36 @@
+PowerShell Komutları ;
+
+1.ADIM
+
+Install-Module az -Force
+Install-Module AzureAD -Force
+Install-Module microsoft.rdInfra.rdpowershell -Force
+--------------------------------------------------
+
+2.ADIM
+
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
+Import-Module az
+Import-Module AzureAD
+Import-Module microsoft.rdInfra.rdpowershell
+Login-AzAccount
+Connect-AzureAD
+--------------
+
+3.ADIM
+
+$url="https://rdbroker.wvd.microsoft.com"
+Add-RdsAccount -DeploymentUrl $url
+-------------------------
+
+4.ADIM
+
+$tenantId = "TENANT ID "
+$subId = "SUBSC ID "
+$pool = "pool açıyoruz"
+New-RdsTenant -Name $tenant -AadTenantId $tenantId -AzureSubscriptionId $subId
+Get-RdsTenant
+-----------------------------
+5.ADIM
+
+New-RdsRoleAssignment -TenantName $pool -RoleDefinitionName "RDS Owner" -SignInName user@domain
