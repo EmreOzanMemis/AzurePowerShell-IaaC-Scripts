@@ -1,0 +1,14 @@
+$connectionName = "AzureRunAsConnection"
+ # Get the connection "AzureRunAsConnection "
+    $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
+
+    "Logging in to Azure..."
+    Add-AzureRmAccount `
+        -ServicePrincipal `
+        -TenantId $servicePrincipalConnection.TenantId `
+        -ApplicationId $servicePrincipalConnection.ApplicationId `
+        -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint 
+    
+    Stop-AzureRmVm -ResourceGroupName "RG-NAME" -Name "VM-NAME" -Force
+    
+    Start-AzureRmVm -ResourceGroupName "RG-NAME" -Name "VM-NAME" 
